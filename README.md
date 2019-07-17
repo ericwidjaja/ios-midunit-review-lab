@@ -67,7 +67,7 @@ Input: `[1,5,2,4,1,4]`
 
 
 Output: `1`
-```
+```swift
 var smallestNum = Int.max
     for num in arr {
         if num < smallestNum {
@@ -83,7 +83,7 @@ print(smallestNum)
 In put: `[1,5,2,4,1,4]`
 
 Output: `17`
-```
+```swift
 var sumArr = 0
 for num in arr {
     sumArr += num
@@ -98,10 +98,11 @@ print(arr.reduce(0, +))
 
 Input: `[3,4.5,7.5,2,1]`
 Output: `3.6`
-```
+```swift
 print(arr.reduce(0, +)/Double(arr.count))
 
 //OR
+
 var sum = 0.0
 var numbersTotal = 0.0
 for numbers in arr {
@@ -117,7 +118,8 @@ print(sum/numbersTotal)
 
 Input: `[3,4.5,7.5,2,1], 3`
 Output: `12`
-```
+```swift
+
 var sum = 0.0
 
 for numbers in array {
@@ -134,7 +136,8 @@ print(sum)
 Input: `[3,4.5,7.5,2,1]`
 
 Output: `202.5`
-```
+```swift
+
 var product = 1.0
 
     for numbers in array {
@@ -149,7 +152,8 @@ print(product)
 Input: `[3,6,1,9,4,8]`
 
 Output: `3`
-```
+```swift
+
 let numbersArray = [3,6,1,9,4,8, 1, 1, 3, 6]
 var numArr: [Int] = []
 
@@ -175,7 +179,8 @@ print(numArr.sorted()[1])
 Input: `[nil, "We", "come", nil, "in", "peace"]`
 
 Output: `["We", "come", "in", "peace"]`
-```
+```swift
+
 for word in givenWords {
     if let wordUnwrapped = word { // Looks at "word" (which are nil, "We", "come", nil, "in", "peace" and says, "okay, if word contains an ACTUAL value (ie: NOT nil), save it to the new variable 'wordUnwrapped'
     print(wordUnwrapped)
@@ -191,7 +196,8 @@ print(sentence)
 Input: `nil`
 
 Output: `[]`
-```
+```swift
+
 let optionalArray: [String?]? = nil
 var newStringArray: [String] = []
 
@@ -213,20 +219,39 @@ print(newStringArray)
 Input: `[4, nil, 9, 5, nil]`
 
 Output: `18`
+```swift
+
+for number in numArr {
+guard let number = number
+    else{ // it will check if the number is real, if not it will move to the next index
+        continue
+    }
+
+    print(number) //to check if does not contain nil
+    
+    numSum += number
+}
+
+print(numSum)
+```
 
 4. **Given an array of type [Int?]? return the sum of all non-nil values.  Use guard statements in your solution.**
 
 Input: `nil`
 
 Output: `0`
+```swift
 
+
+
+```
 5. **Given an array of type [Int?] and an optional Int, return the sum of all values not equal to the given number.  If the given number is nil, return the sum of all non-nil values.**
 
 Input: `[1, 1, nil, 3, 5, nil, 1, nil, 3, 5, nil, 5, nil, 3], 1`
 
 Output: `24`
 
-
+ 
 ## Dictionaries
 
 1. **Given an array of type [String], return a copy of the array with all duplicate values removed**
