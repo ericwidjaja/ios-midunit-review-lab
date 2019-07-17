@@ -80,35 +80,94 @@ print(smallestNum)
 
 3. **Given an array of type [Int], return its sum**
 
-In< put: `[1,5,2,4,1,4]`
+In put: `[1,5,2,4,1,4]`
 
 Output: `17`
+```
+var sumArr = 0
+for num in arr {
+    sumArr += num
+    }
+
+print(sumArr)
+//or
+print(arr.reduce(0, +))
+```
 
 4. **Given an array of type [Double], return its average**
 
 Input: `[3,4.5,7.5,2,1]`
-
 Output: `3.6`
+```
+print(arr.reduce(0, +)/Double(arr.count))
 
+//OR
+var sum = 0.0
+var numbersTotal = 0.0
+for numbers in arr {
+    sum += numbers
+    numbersTotal += 1.0
+}
+
+print(sum)
+print(numbersTotal)
+print(sum/numbersTotal)
+```
 5. **Given an array of type [Double] and a Double, return the sum of all numbers in the array greater than a given number**
 
 Input: `[3,4.5,7.5,2,1], 3`
-
 Output: `12`
+```
+var sum = 0.0
 
+for numbers in array {
+    if numbers > 3.0 {
+    sum += numbers
+    }
+}
+
+print(sum)
+```
 
 6. **Given an array of type [Double], return the product of all the elements**
 
 Input: `[3,4.5,7.5,2,1]`
 
 Output: `202.5`
+```
+var product = 1.0
+
+    for numbers in array {
+    product *= numbers
+    }
+
+print(product)
+```
 
 7. **Given an array of type [Int], return the second smallest value in the array**
 
 Input: `[3,6,1,9,4,8]`
 
 Output: `3`
+```
+let numbersArray = [3,6,1,9,4,8, 1, 1, 3, 6]
+var numArr: [Int] = []
 
+//The problem is that array has repeated numbers. So using index 1 (as the second smallest numbers in an array), the second element, may not actually be the second smallest numbers. How do we fix it?
+
+let setNumbers = Set(numbersArray)
+
+//Set is a 'random', so we need to sort it.
+print(setNumbers.sorted()[1])
+
+//OR
+
+for number in numbersArray where numArr.contains(number) == false {
+    numArr.append(number)
+}
+
+print(numArr.sorted()[1])
+```
 ## Optionals
 
 1. **Given an array of type [String?] return an array of [String] removing all nil values**
@@ -116,12 +175,38 @@ Output: `3`
 Input: `[nil, "We", "come", nil, "in", "peace"]`
 
 Output: `["We", "come", "in", "peace"]`
+```
+for word in givenWords {
+    if let wordUnwrapped = word { // Looks at "word" (which are nil, "We", "come", nil, "in", "peace" and says, "okay, if word contains an ACTUAL value (ie: NOT nil), save it to the new variable 'wordUnwrapped'
+    print(wordUnwrapped)
+    sentence.append(wordUnwrapped)
+    }
+}
+
+print(sentence)
+```
 
 2. **Given an array of type [String?]? return an array of [String] removing all nil values**
 
 Input: `nil`
 
 Output: `[]`
+```
+let optionalArray: [String?]? = nil
+var newStringArray: [String] = []
+
+if let arrayUnwrapped = optionalArray { // If 'optionalArray' is not a nil and is an actual array, let's save it to a new variable called 'arrayUnwrapped' that we just created.
+
+for stuff in arrayUnwrapped { // This is now looking at all the elements in the newly made arrayUnwrapped. The stuff inside arrayUnwrapped can still be nil because it is of the type '[String?]'
+    if let stuffUnwrapped = stuff {// Now, if the stuff/elements in the new arrayUnwrapped are NOT nil and actually have values, let's save all of that to another variable called stuffUnwrapped.
+
+        newStringArray.append(stuffUnwrapped) //Now, we have our variable, 'stuffUnwrapped', that we know contains real string and no nils. Let us append these to the empty [String] array and print it.
+        }
+    }
+}
+
+print(newStringArray)
+```
 
 3. **Given an array of type [Int?] return the sum of all non-nil values.  Use guard statements in your solution.**
 
@@ -206,11 +291,43 @@ enum NumberType {
     case even
     case odd
 }
-```
-
 Input: `[1,2,3,4,5,6], NumberType.odd`
-
 Output: `[1,3,5]`
+```
+```
+let number = [1,2,3,4,5,6]
+
+enum NumberType {
+
+case even
+// Even numbers can be found by using the argument, "Number % 2 == 0"
+case odd
+// Odd numbers can be found by using the argument, "Number % 2 != 0"
+
+func evenOrOdd(arr: [Int]) -> [Int] {
+var numArr: [Int] = [] //This array will have the numbers appended to it depending on the case
+switch self { //Refers to instance of NumberType. Looks at its own value. In this case, it would be even or odd.
+case .even: //Conditions to check for even numbers + append
+for numbers in arr {
+if numbers % 2 == 0 {
+numArr.append(numbers)
+}
+
+}
+
+case .odd: //Conditions to check for odd numbers + append
+for numbers in arr {
+if numbers % 2 != 0 {
+numArr.append(numbers)
+}
+}
+}
+return numArr //returns the array with the appeneded numbers
+}
+}
+let even = NumberType.even //Instance of NumberType that has the member value, 'even'.
+print(even.evenOrOdd(arr: number))
+```
 
 2. **Given a String and an instance of StringType (defined below), return the String either lowercased or uppercased**
 
