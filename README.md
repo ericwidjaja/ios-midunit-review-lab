@@ -8,14 +8,27 @@
 Input: `Hello, there`
 
 Output: `HELLO, THERE`
+```swift
+var str = "Hello, there"
+print(str.uppercased())
 
+```
 2. **Given a String, return a String alternating between uppercase and lowercase letters**
-
 
 Input: `Hello, there`
 
 Output: `HeLlO, tHeRe`
+```swift
+for (index, element) in strArray.enumerated () {
+    if index % 2 == 0 {
+    answer.append(String(element.uppercased()))
+    } else {
+    answer.append(String(element).lowercased())
+    }
+}
 
+print(answer.joined())
+```
 
 3. **Given a String, return a String with all occurrences of a given letter removed**
 
@@ -23,6 +36,7 @@ Input: `Hello, there`
 
 Output: `Hllo, thr`
 
+``print(str.replacingOccurrences(of: "e", with: ""))``
 
 ## Arrays
 
@@ -33,15 +47,40 @@ Input: `[1,5,2,4,1,4]`
 
 Output: `5`
 
+```swift
+
+let arr = [1,5,2,4,1,4]
+var biggestNum = 0
+    for num in arr {
+        if num > biggestNum {
+        biggestNum = num
+        }   
+    }
+
+print(biggestNum)
+
+```
+
 2. **Given an array of type [Int], return the smallest element**
 
 Input: `[1,5,2,4,1,4]`
 
+
 Output: `1`
+```
+var smallestNum = Int.max
+    for num in arr {
+        if num < smallestNum {
+        smallestNum = num
+        }
+    }
+    
+print(smallestNum)
+```
 
 3. **Given an array of type [Int], return its sum**
 
-Input: `[1,5,2,4,1,4]`
+In< put: `[1,5,2,4,1,4]`
 
 Output: `17`
 
