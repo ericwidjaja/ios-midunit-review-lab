@@ -241,8 +241,20 @@ Input: `nil`
 
 Output: `0`
 ```swift
+let numArr: [Int?]? = nil
+var numSum = 0
 
+if let numArr = numArr {
+    for number in numArr {
+        guard let number = number
+            else{  // it will check if the number is real, if not it will move to the next index
+                continue
+        }
+        numSum += number
+    }
+}
 
+print(numSum)
 
 ```
 5. **Given an array of type [Int?] and an optional Int, return the sum of all values not equal to the given number.  If the given number is nil, return the sum of all non-nil values.**
